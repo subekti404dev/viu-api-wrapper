@@ -1,6 +1,15 @@
 # VIU Api Wrapper
 simple api wrapper for VIU
 
+## How to Install
+```bash
+npm install github:subekti404dev/viu-api-wrapper
+
+# or
+
+yarn add github:subekti404dev/viu-api-wrapper
+```
+
 ## How to Use
 ```typescript
 import {Home, Search, Detail, HLS} from 'viu-api-wrapper';
