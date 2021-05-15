@@ -2,6 +2,8 @@ import HttpUtil from "./utils/http.util";
 import TokenUtil from "./utils/token.util";
 import ThumbUtil from "./utils/thumb.util";
 import _ from "lodash";
+import InterpolationUtil from "./utils/interpolation.util";
+import config from "./config";
 
 interface Main {
   title: string;
@@ -38,7 +40,12 @@ class Detail {
     if (id.startsWith("playlist")) {
       type = "container";
     }
-    return `https://www.viu.com/ott/web/api/${type}/load?ver=1.0&fmt=json&aver=5.0&appver=2.0&appid=viu_desktop&platform=desktop&id=${id}&start=${start}&limit=${limit}&filter=mixed&contentCountry=ID&contentFlavour=all&regionid=all&languageid=id&ccode=ID`;
+    return InterpolationUtil.interpolate(config.DetailUrl, [
+      type,
+      id,
+      start,
+      limit,
+    ]);
   }
 
   public static async getData(
@@ -95,9 +102,5 @@ class Detail {
     }
   }
 }
-
-// const id = `playlist-25694403`;
-// // const id = `1165860656`
-// Detail.getData(id).then(console.log).catch(console.log);
 
 export default Detail;

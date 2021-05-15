@@ -2,6 +2,8 @@ import HttpUtil from "./utils/http.util";
 import TokenUtil from "./utils/token.util";
 import _ from "lodash";
 import ThumbUtil from "./utils/thumb.util";
+import InterpolationUtil from "./utils/interpolation.util";
+import config from "./config";
 const XmlParser = require("xml2js").parseString;
 const Xml2Json = async (xml: string) => {
   return new Promise((resolve, reject) => {
@@ -44,14 +46,14 @@ interface SearchData {
 }
 
 class Search {
-  private static url(keyword: string, start: number = 0, limit: number = 50) {
-    keyword = encodeURIComponent(keyword);
-    return `https://prod-in.viu.com/api/search/extsearch?keyword=${keyword}&start=${start}&limit=${limit}&carrierid=0&appid=viu_android&appver=1.1.2&auto_populate=false&ccode=ID&compressed=true&contentPrivilege=PREMIUM_GRANTED&countryCode=ID&devicecountry=&devicetimezone=&geo=10&iid=a6ef4f72d9bae72c&languageid=id&platform=app&regionid=all&userid=5a4b6e86-17d7-430c-8c8d-8115b8e44f3c&ver=1.0&vuserid=5a4b6e86-17d7-430c-8c8d-8115b8e44f3c`;
-  }
-
   public static async getData(keyword: string): Promise<SearchData> {
     const token = await TokenUtil.getToken();
-    const xml = await HttpUtil.get(this.url(keyword), {
+    const url = InterpolationUtil.interpolate(config.SearchUrl, [
+      encodeURIComponent(keyword),
+      0,
+      50,
+    ]);
+    const xml = await HttpUtil.get(url, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -90,7 +92,5 @@ class Search {
     return { container };
   }
 }
-
-// Search.getData("taxi driver").then((data) => console.log(data.container[0].item));
 
 export default Search;

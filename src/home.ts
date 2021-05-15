@@ -2,7 +2,8 @@ import _ from "lodash";
 import HttpUtil from "./utils/http.util";
 import ThumbUtil from "./utils/thumb.util";
 import TokenUtil from "./utils/token.util";
-import XAuthToken from "./x-auth.token";
+import Config from "./config";
+import InterpolationUtil from "./utils/interpolation.util";
 
 interface Item {
   id: string;
@@ -35,16 +36,13 @@ export interface HomeData {
 }
 
 class Home {
-  private static url(page: number = 1) {
-    return `https://homepage.viuing.io/homepage/v1/pages/${page}?pageId=a721169792a48d58fdef2c1dd46d4d1c.id.default&pageKey=id.app.all&versionName=1.1.2&appid=viu_android&platform=app&format=json&user_new=false&user_geo=10&user_ccode=ID&user_content_preference=all&user_segment=10&app_lang=id&url=https%3A%2F%2Fd2405b0jymm2dk.cloudfront.net%2Fprogram%2Fprod%2Fa721169792a48d58fdef2c1dd46d4d1c%2F1621012386628%2Fid%2Fdefault%2F`;
-  }
-
   public static async getData(page: number = 1): Promise<HomeData> {
     const token = await TokenUtil.getToken();
-    const result = await HttpUtil.get(this.url(page), {
+    const url = InterpolationUtil.interpolate(Config.HomeUrl, [page]);
+    const result = await HttpUtil.get(url, {
       headers: {
         Authorization: `Bearer ${token}`,
-        "X-AUTH-TOKEN": XAuthToken,
+        "X-AUTH-TOKEN": Config.XAuthToken,
       },
     });
     for (const container of _.get(result, "container", [])) {
@@ -80,11 +78,5 @@ class Home {
     return result;
   }
 }
-
-// Home.getData()
-//   .then((data) => {
-//     console.log(data.container[0].item);
-//   })
-//   .catch(console.log);
 
 export default Home;

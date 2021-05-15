@@ -1,5 +1,5 @@
 {
-  "name": "viu-data",
+  "name": "viu-api-wrapper",
   "version": "1.0.0",
   "description": "",
   "main": "dist/index.js",
