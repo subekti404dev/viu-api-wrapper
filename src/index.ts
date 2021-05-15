@@ -3,11 +3,9 @@ import Search from "./search";
 import Detail from "./detail";
 import HLS from "./hls";
 
-const VIU = {
+export {
   Home,
   Search,
   Detail,
   HLS,
 };
-
-export default VIU;
