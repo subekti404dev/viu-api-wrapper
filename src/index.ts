@@ -1,9 +1,11 @@
 import Home from "./home";
-import Detail from "./detail";
 import Search from "./search";
+import Detail from "./detail";
+import HLS from "./hls";
 
 export default {
   Home,
-  Detail,
   Search,
+  Detail,
+  HLS,
 };
