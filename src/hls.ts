@@ -7,11 +7,11 @@ interface PlayUrlData {
 }
 
 class HLS {
-  static url(id: string | number): string {
+  private static url(id: string | number): string {
     return `https://drm-prod.viuing.io/video/v1/token/${id}?platform=app&compress=true&dynamic=true&appVer=1.1.2&carrierId=0`;
   }
 
-  static async getPlayUrl(id: string | number): Promise<PlayUrlData> {
+  public static async getPlayUrl(id: string | number): Promise<PlayUrlData> {
     const token = await TokenUtil.getToken();
     const headers = {
       Authorization: `Bearer ${token}`,
