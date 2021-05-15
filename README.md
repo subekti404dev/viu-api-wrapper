@@ -1,3 +1,5 @@
+[![view on npm](http://img.shields.io/npm/v/viu-api-wrapper.svg)](https://www.npmjs.org/package/viu-api-wrapper)
+[![npm module downloads per month](http://img.shields.io/npm/dm/viu-api-wrapper.svg)](https://www.npmjs.org/package/viu-api-wrapper)
 # VIU Api Wrapper
 simple api wrapper for VIU
 
