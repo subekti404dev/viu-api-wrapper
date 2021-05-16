@@ -8,7 +8,7 @@ import config from "./config";
 interface Main {
   title: string;
   description: string;
-  thumbnail: string;
+  thumbnail: string | null;
   director: string;
   tags: string;
   year_of_release: number;
@@ -23,7 +23,7 @@ interface Item {
   description: string;
   display_title: string;
   duration: number;
-  thumbnail: string;
+  thumbnail: string | null;
 }
 
 interface DetailData {
