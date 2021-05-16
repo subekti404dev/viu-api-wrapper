@@ -73,7 +73,7 @@ class Search {
       if (!Array.isArray(c.item)) c.item = [c.item];
       const item: Item[] = [];
       for (const it of c.item) {
-        const tcid_2x3 = it.tcid_2x3 || it["tcid_1x1.5"] || it.tcid_2x3_t;
+        const tcid_2x3 = it.tcid_2x3_t || it["tcid_1x1.5"] || it.tcid_2x3;
         const tcid_16x9 = it.tcid_16x9;
 
         item.push({
