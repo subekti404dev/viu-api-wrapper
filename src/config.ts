@@ -7,5 +7,5 @@ export default {
   HLSUrl: `https://drm-prod.viuing.io/video/v1/token/:0:?platform=app&compress=true&dynamic=true&appVer=1.1.2&carrierId=0`,
   TokenUrl: `https://um.viuapi.io/user/identity?ver=1.0&fmt=json&aver=5.0&appver=2.0&appid=viu_desktop&platform=desktop&iid=ebf11fa4-bbbb-4441-b462-4d74efd5ab1d`,
   ThumbUrl: `https://vuclipi-a.akamaihd.net/p/cloudinary/h_171,w_304,dpr_1.5,f_auto,c_thumb,q_auto:low/:0:/d-1`,
-  TcUrl: `https://vuclip-eip-th.akamaized.net/p/ttwebp540x800/d-1/:0:.webp`
+  TcUrl: `https://vuclip-eip-th.akamaized.net/p/ttwebp:1:x:2:/d-1/:0:.webp`
 };
